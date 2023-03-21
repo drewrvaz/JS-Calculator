@@ -37,7 +37,7 @@ function handleOperator(nextOperator) {
     return;
   }
 
-  if (firstOperand == null && !isNaN(inputValue)) {
+  if (firstOperand === null && !isNaN(inputValue)) {
     calculator.firstOperand = inputValue;
   } else if (operator) {
     const result = calculate(firstOperand, inputValue, operator);
