@@ -1,12 +1,12 @@
 const calculator = {
   displayValue: "0",
   firstOperand: null,
-  waitingForSecondOperand,
+  waitingForSecondOperand: false,
   operator: null,
 };
 
 function inputDigit(digit) {
-  const { displayValue, waitingForSecondOperand } =calculator;
+  const { displayValue, waitingForSecondOperand } = calculator;
 
   if (waitingForSecondOperand === true) {
     calculator.displayValue = digit;
@@ -70,7 +70,11 @@ function resetCalculator() {
 
 function updateDisplay() {
   const display = document.querySelector(".calculator-screen");
-  display.value = calculator.displayValue
+  // display.value = calculator.displayValue
+
+  if (display) {
+    display.value = calculator.displayValue
+  }
 }
 
 updateDisplay();
