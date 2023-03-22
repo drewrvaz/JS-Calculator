@@ -5,6 +5,7 @@ const calculator = {
   operator: null,
 };
 
+// function for inputting the digits
 function inputDigit(digit) {
   const { displayValue, waitingForSecondOperand } = calculator;
 
@@ -16,6 +17,7 @@ function inputDigit(digit) {
   }
 }
 
+// function for adding a number with a decimal
 function inputDecimal(dot) {
   if (calculator.waitingForSecondOperand === true) {
   	calculator.displayValue = '0.'
@@ -28,6 +30,7 @@ function inputDecimal(dot) {
   }
 }
 
+// function for inputing operators
 function handleOperator(nextOperator) {
   const { firstOperand, displayValue, operator } = calculator
   const inputValue = parseFloat(displayValue);
@@ -51,6 +54,7 @@ function handleOperator(nextOperator) {
   calculator.operator = nextOperator;
 }
 
+// function for making the calculation
 function calculate(firstOperand, secondOperand, operator) {
   if (operator === '+') {
     return firstOperand + secondOperand;
@@ -65,6 +69,7 @@ function calculate(firstOperand, secondOperand, operator) {
   return secondOperand;
 }
 
+// function to reset the calculator
 function resetCalculator() {
   calculator.displayValue = '0';
   calculator.firstOperand = null;
@@ -72,17 +77,15 @@ function resetCalculator() {
   calculator.operator = null;
 }
 
+// function to update the calculator display once the user is done
 function updateDisplay() {
   const display = document.querySelector('.calculator-screen');
   display.value = calculator.displayValue
-
-  // if (display) {
-  //   display.value = calculator.displayValue
-  // }
 }
 
 updateDisplay();
 
+// event listener to create inputs for the calculator
 const keys = document.querySelector('.calculator-keys');
 keys.addEventListener('click', event => {
   const { target } = event;
